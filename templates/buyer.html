@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/buyer.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="header-content">
+                <h2>Order Chat</h2>
+                <button onclick="clearChat()" class="clear-chat-btn">Clear Chat</button>
+            </div>
+            <div id="orderStatus">Status: Processing</div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be populated here -->
+        </div>
+
+        <div class="bargain-section">
+            <input type="number" 
+                   id="bargainAmount" 
+                   min="0.01" 
+                   step="0.01" 
+                   placeholder="Enter amount">
+            <button onclick="sendBargainRequest()" class="bargain-btn">Send Bargain Request</button>
+        </div>
+
+        <div class="chat-input-container">
+            <div class="file-input-area">
+                <input type="file" id="fileInput" style="display: none;" onchange="handleFileSelect()" multiple>
+                <button onclick="document.getElementById('fileInput').click()">Attach Files</button>
+                <div class="selected-files" id="selectedFiles"></div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Type a message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', path='/js/buyer.js') }}"></script>
+</body>
+</html>

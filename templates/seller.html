@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/seller.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="header-content">
+                <h2>Order Chat</h2>
+                <button onclick="clearChat()" class="clear-chat-btn">Clear Chat</button>
+            </div>
+            <div id="orderStatus">Status: Processing</div>
+        </div>
+
+        <div class="order-controls">
+            <select id="orderStatusSelect" onchange="handleStatusChange()">
+                <option value="processing">Processing</option>
+                <option value="shipped">Shipped</option>
+                <option value="delivered">Delivered</option>
+            </select>
+            <button onclick="updateStatus()">Update Status</button>
+        </div>
+        
+        <div class="tracking-section" id="trackingSection">
+            <input type="text" id="courierService" placeholder="Enter courier service">
+            <button onclick="updateTracking()">Add Tracking</button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be populated here -->
+        </div>
+
+        <div class="chat-input-container">
+            <div class="file-input-area">
+                <input type="file" id="fileInput" style="display: none;" onchange="handleFileSelect()" multiple>
+                <button onclick="document.getElementById('fileInput').click()">Attach Files</button>
+                <div class="selected-files" id="selectedFiles"></div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Type a message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', path='/js/seller.js') }}"></script>
+</body>
+</html>
